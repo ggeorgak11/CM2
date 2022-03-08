@@ -23,17 +23,17 @@ Matterport3D (MP3D) dataset (the habitat subset and not the entire Matterport3D)
 
 
 ### Instructions
-Here we provide instructions on how to use our code. All options can be found in `train_options.py`. The episodes from VLN-CE should be under the `--root_path`.
+Here we provide instructions on how to use our code. All options can be found in `train_options.py`. The episodes from VLN-CE should be under the `--root_path`. The DD-PPO model should be placed under `root_path/local_policy_models`
 
 #### Testing on VLN-CE
 To run an evaluation of CM2-GT on a single scene from val-seen: 
 ```
-python main.py --name test_cm2-gt_val-seen --root_path /path/to/habitat-lab/ --scenes_dir /habitat-lab/data/scene_datasets/ --model_exp_dir /path/to/cm2-gt/model/folder/ --log_dir logs/ --scenes_list 1pXnuDYAj8r --gpu_capacity 1 --split val_seen --use_first_waypoint --vln
+python main.py --name test_cm2-gt_val-seen --root_path /path/to/habitat-lab/folder/ --scenes_dir /habitat-lab/data/scene_datasets/ --model_exp_dir /path/to/cm2-gt/model/folder/ --log_dir logs/ --scenes_list 1pXnuDYAj8r --gpu_capacity 1 --split val_seen --use_first_waypoint --vln
 ```
 
 To run an evaluation of CM2 on a single scene from val-seen: 
 ```
-python main.py --name test_cm2_val-seen --root_path /path/to/habitat-lab/ --scenes_dir /habitat-lab/data/scene_datasets/ --model_exp_dir /path/to/cm2/model/folder/ --log_dir logs/ --img_segm_model_dir /path/to/img/segm/model/folder/ --scenes_list 1pXnuDYAj8r --gpu_capacity 1 --split val_seen --use_first_waypoint --goal_conf_thresh 0.2 --vln_no_map
+python main.py --name test_cm2_val-seen --root_path /path/to/habitat-lab/folder/ --scenes_dir /habitat-lab/data/scene_datasets/ --model_exp_dir /path/to/cm2/model/folder/ --log_dir logs/ --img_segm_model_dir /path/to/img/segm/model/folder/ --scenes_list 1pXnuDYAj8r --gpu_capacity 1 --split val_seen --use_first_waypoint --goal_conf_thresh 0.2 --vln_no_map
 ```
 
 To enable visualizations during testing use `--save_nav_images`.
@@ -42,12 +42,12 @@ To enable visualizations during testing use `--save_nav_images`.
 #### Generating training data
 To generate the data for a single scene from train split to train the CM2-GT model:
 ```
-python store_episodes_vln.py --root_path /path/to/habitat-lab/ --scenes_dir /habitat-lab/data/scene_datasets/ --episodes_save_dir /path/to/cm2-gt/episodes/save/dir/ --scenes_list 1pXnuDYAj8r --gpu_capacity 1
+python store_episodes_vln.py --root_path /path/to/habitat-lab/folder/ --scenes_dir /habitat-lab/data/scene_datasets/ --episodes_save_dir /path/to/cm2-gt/episodes/save/dir/ --scenes_list 1pXnuDYAj8r --gpu_capacity 1
 ```
 
 To generate the data for a single scene from train split to train the CM2 model:
 ```
-python store_episodes_vln_no_map.py --root_path /path/to/habitat-lab/ --scenes_dir /habitat-lab/data/scene_datasets/ --episodes_save_dir /path/to/cm2/episodes/save/dir/ --scenes_list 1pXnuDYAj8r --gpu_capacity 1 --img_segm_model_dir /path/to/img/segm/model/folder/
+python store_episodes_vln_no_map.py --root_path /path/to/habitat-lab/folder/ --scenes_dir /habitat-lab/data/scene_datasets/ --episodes_save_dir /path/to/cm2/episodes/save/dir/ --scenes_list 1pXnuDYAj8r --gpu_capacity 1 --img_segm_model_dir /path/to/img/segm/model/folder/
 ```
 
 
