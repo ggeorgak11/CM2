@@ -107,19 +107,16 @@ class HabitatDataVLN(Dataset):
                     sc_path = self.data['episodes'][i]['scene_id']
                     sc_id = sc_path.split('/')[-1].split('.')[0]
                     if sc_id == self.scene_id:                        
-                        # check whether goal is at the same height as start position
-                        start_pos = self.data['episodes'][i]['start_position']
-                        goal_pos = self.data['episodes'][i]['goals'][0]['position']
-                        if np.absolute(start_pos[1] - goal_pos[1]) < 0.2:
-                            self.data['episodes'][i]['scene_id'] = self.scene_id
-                            self.data['episodes'][i]['dataset'] = s
-                            
-                            # get gt info
-                            gt_info = self.data_gt[ str(self.data['episodes'][i]['episode_id']) ] # locations, forward_steps, actions
-                            self.data['episodes'][i]['waypoints'] = gt_info['locations']
-                            self.data['episodes'][i]['actions'] = gt_info['actions']
 
-                            self.scene_data['episodes'].append(self.data['episodes'][i])
+                        self.data['episodes'][i]['scene_id'] = self.scene_id
+                        self.data['episodes'][i]['dataset'] = s
+                        
+                        # get gt info
+                        gt_info = self.data_gt[ str(self.data['episodes'][i]['episode_id']) ] # locations, forward_steps, actions
+                        self.data['episodes'][i]['waypoints'] = gt_info['locations']
+                        self.data['episodes'][i]['actions'] = gt_info['actions']
+
+                        self.scene_data['episodes'].append(self.data['episodes'][i])
                             
 
     def __len__(self):
@@ -547,19 +544,16 @@ class HabitatDataVLN_UnknownMap(Dataset):
                     sc_path = self.data['episodes'][i]['scene_id']
                     sc_id = sc_path.split('/')[-1].split('.')[0]
                     if sc_id == self.scene_id:                        
-                        # check whether goal is at the same height as start position
-                        start_pos = self.data['episodes'][i]['start_position']
-                        goal_pos = self.data['episodes'][i]['goals'][0]['position']
-                        if np.absolute(start_pos[1] - goal_pos[1]) < 0.2:
-                            self.data['episodes'][i]['scene_id'] = self.scene_id
-                            self.data['episodes'][i]['dataset'] = s
-                            
-                            # get gt info
-                            gt_info = self.data_gt[ str(self.data['episodes'][i]['episode_id']) ] # locations, forward_steps, actions
-                            self.data['episodes'][i]['waypoints'] = gt_info['locations']
-                            self.data['episodes'][i]['actions'] = gt_info['actions']
 
-                            self.scene_data['episodes'].append(self.data['episodes'][i])
+                        self.data['episodes'][i]['scene_id'] = self.scene_id
+                        self.data['episodes'][i]['dataset'] = s
+                        
+                        # get gt info
+                        gt_info = self.data_gt[ str(self.data['episodes'][i]['episode_id']) ] # locations, forward_steps, actions
+                        self.data['episodes'][i]['waypoints'] = gt_info['locations']
+                        self.data['episodes'][i]['actions'] = gt_info['actions']
+
+                        self.scene_data['episodes'].append(self.data['episodes'][i])
                             
 
     def __len__(self):
